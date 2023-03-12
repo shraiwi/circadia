@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Circadia Setup</title>
+	<svg style="position: absolute; width: 0; height: 0;">
+		<clipPath id="clip-24gon" clipPathUnits="objectBoundingBox"><path d="m0.5,0,-0.062,0.029,-0.067,-0.012,-0.052,0.044,-0.068,0.006,-0.039,0.056,-0.064,0.023,-0.023,0.064,-0.056,0.039,-0.006,0.068,-0.044,0.052,0.012,0.067,-0.029,0.062,0.029,0.062,-0.012,0.067,0.044,0.052,0.006,0.068,0.056,0.039,0.023,0.064,0.064,0.023,0.039,0.056,0.068,0.006,0.052,0.044,0.067,-0.012,0.062,0.029,0.062,-0.029,0.067,0.012,0.052,-0.044,0.068,-0.006,0.039,-0.056,0.064,-0.023,0.023,-0.064,0.056,-0.039,0.006,-0.068,0.044,-0.052,-0.012,-0.067,0.029,-0.062,-0.029,-0.062,0.012,-0.067,-0.044,-0.052,-0.006,-0.068,-0.056,-0.039,-0.023,-0.064,-0.064,-0.023,-0.039,-0.056,-0.068,-0.006,-0.052,-0.044,-0.067,0.012,-0.062,-0.029 m0,0.104,0.049,0.023,0.053,-0.01,0.041,0.035,0.054,0.005,0.031,0.044,0.051,0.018,0.018,0.051,0.044,0.031,0.005,0.054,0.035,0.041,-0.01,0.053,0.023,0.049,-0.023,0.049,0.01,0.053,-0.035,0.041,-0.005,0.054,-0.044,0.031,-0.018,0.051,-0.051,0.018,-0.031,0.044,-0.054,0.005,-0.041,0.035,-0.053,-0.01,-0.049,0.023,-0.049,-0.023,-0.053,0.01,-0.041,-0.035,-0.054,-0.005,-0.031,-0.044,-0.051,-0.018,-0.018,-0.051,-0.044,-0.031,-0.005,-0.054,-0.035,-0.041,0.01,-0.053,-0.023,-0.049,0.023,-0.049,-0.01,-0.053,0.035,-0.041,0.005,-0.054,0.044,-0.031,0.018,-0.051,0.051,-0.018,0.031,-0.044,0.054,-0.005,0.041,-0.035,0.053,0.01,0.049,-0.023"></path></clipPath>
+	</svg>
+
+	<svg style="position: absolute; width: 0; height: 0;"> 
+		<clipPath id='clip-doughnut' clipPathUnits="objectBoundingBox"><path d='M0,0.5 A0.5,0.5 0,1,1 1,0.5 A0.5,0.5 0,1,1 0,0.5 z M0.25,0.5 A0.25,0.25 0,1,1 0.75,0.5 A0.25,0.25 0,1,1 0.25,0.5 z'
+		clip-rule='evenodd'/> 
+		</clipPath>
+	</svg> 
+	<style type="text/css">
+		body {
+			margin: auto;
+			background: black;
+			color: white;
+		}
+
+		#bean-container {
+			filter: blur(0.5pt) drop-shadow(0px 0px 16pt white);
+			width: min(80vw, 50vh);
+			height: min(80vw, 50vh);
+
+			border-radius: min(80vw, 50vh);
+			border: 3pt solid white;
+			box-sizing: border-box;
+
+			margin: auto;
+			margin-top: 10vh;
+			margin-bottom: 2em;
+		}
+		
+		#bean {
+			z-index: -1;
+
+			width: 100%;
+			height: 100%;
+
+			border-radius: min(80vw, 50vh);
+			/*border: 3pt solid white;*/
+
+
+			/*border-style: solid;
+			border-width: 0.4em;
+			border-image: conic-gradient(yellow 50%, black 50%);
+			background-image: conic-gradient(rgba(0, 0, 0, 0) 30deg, yellow 30deg, yellow 60deg, rgba(0, 0, 0, 0) 60deg);*/
+
+			margin: 0;
+
+			mix-blend-mode: screen;
+
+			clip-path: url(#clip-doughnut);
+			/*clip-path: url(#clip-24gon);*/
+		}
+
+		#time {
+			margin: auto;
+			text-align: center;
+
+			color: white;
+			background: none;
+
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 1.5em;
+
+			margin-bottom: 1em;
+		}
+
+		#update {
+			display: block;
+
+			margin: auto;
+			text-align: center;
+			padding: 4pt 8pt;
+
+			color: white;
+			background: linear-gradient(30deg, #5b8eb0, rgb(172, 186, 193));
+
+			font-family: monospace;
+			font-weight: bold;
+			font-size: 1.5em;
+
+			border: none;
+			border-bottom: 4pt solid white;
+			border-radius: 8pt;
+
+			margin-bottom: 1em;
+
+			box-shadow: 0px 0px 16pt rgba(255, 255, 255, 0.5);
+		}
+
+		input {
+			color: white;
+			background: none;
+
+			padding: 4pt;
+
+			border: none;
+			border-bottom: 4pt solid white;
+			border-radius: 8pt;
+
+			font-family: monospace;
+			font-weight: bold;
+			font-size: 1.5em;
+
+			accent-color: white;
+		}
+
+		input[type="time"]::-webkit-calendar-picker-indicator {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<div id="bean-container">
+			<div id="bean"></div>
+		</div>
+		<div id="time">
+			<input type="time" name="start" value="08:30">
+			<span>-</span>
+			<input type="time" name="end" value="11:30">
+		</div>
+		<button id="update">update</button>
+	</div>
+	<script type="text/javascript">
+		const TEST_GRADIENT = [
+			{ time:    0, cold: 0.0, warm: 0.0 },
+			{ time:  240, cold: 1.0, warm: 0.0 },
+			{ time:  480, cold: 0.5, warm: 0.5 },
+			{ time:  720, cold: 0.0, warm: 0.0 },
+			{ time:  960, cold: 0.0, warm: 1.0 },
+			{ time: 1200, cold: 1.0, warm: 0.0 },
+			{ time: 1400, cold: 0.0, warm: 0.0 },
+		];
+
+		function stopToColor(stop) {
+			const WARM_COLOR = [255, 177, 110];
+			const COLD_COLOR = [255, 246, 237];
+
+			const { warm, cold } = stop;
+
+			return [
+				(WARM_COLOR[0] * warm + COLD_COLOR[0] * cold) / Math.max(1.0, warm + cold),
+				(WARM_COLOR[1] * warm + COLD_COLOR[1] * cold) / Math.max(1.0, warm + cold),
+				(WARM_COLOR[2] * warm + COLD_COLOR[2] * cold) / Math.max(1.0, warm + cold),
+				Math.min(1.0, warm + cold)
+			];
+		}
+
+		function makeConicGradient(stops) {
+			let text = "conic-gradient(";
+
+			for (const stop of stops) {
+				const color = stopToColor(stop);
+
+				text += `rgba(${color}) ${stop.time / 14.40}%, `;
+			}
+
+			text = text.trim().slice(0, -1);
+			text += ")";
+
+			return text;
+		}
+
+		function serializeGradient(stops) {
+			const MAGIC = "aura";
+			const UNIX_NOW = Math.floor(Date.now() / 1000);
+			const IS_LE = true;
+			const PWM_MAX = (1 << 16) - 1;
+
+			const buffer = new ArrayBuffer(4 + 4 + 4 
+				+ (2 + 2 + 2) * stops.length);
+			const view = new DataView(buffer);
+
+			let head = 0;
+
+			for (let i = 0; i < 4; i++) {
+				view.setUint8(head, MAGIC.charCodeAt(i)); head += 1;
+			}
+
+			view.setUint32(head, UNIX_NOW, IS_LE); head += 4;
+			view.setUint32(head, stops.length, IS_LE); head += 4;
+
+			for (const { time, warm, cold } of stops) {
+				view.setUint16(head, time, IS_LE); head += 2;
+				view.setUint16(head, warm * PWM_MAX | 0, IS_LE); head += 2;
+				view.setUint16(head, cold * PWM_MAX | 0, IS_LE); head += 2;
+			}
+
+			return buffer;
+		}
+
+		async function postGradient(buffer) {
+			return await fetch("/", {
+				method: "POST",
+				body: buffer
+			});
+		}
+
+		const lamp = {
+			eBean: document.querySelector("#bean"),
+			eTime: document.querySelector("#time"),
+			eUpdate: document.querySelector("#update"),
+
+			alarm: { start: 0, end: 0 },
+			gradient: [],
+
+			update() {
+				const [startHr, startMin] = this.eStartTime.value.split(":");
+				const [endHr, endMin] = this.eEndTime.value.split(":");
+				this.alarm = {
+					start: +startHr * 60 + +startMin,
+					end: +endHr * 60 + +endMin,
+				};
+
+				const { start, end } = this.alarm
+
+				this.gradient = [
+					{ time: 0, 			cold: 0.0, warm: 0.0, },
+					{ time: start - 180, cold: 0.0, warm: 0.0, },
+					{ time: start - 30, cold: 0.0, warm: 0.2, },
+					{ time: start - 10, cold: 0.0, warm: 0.7, },
+					{ time: start - 5, 	cold: 0.3, warm: 1.0, },
+					{ time: start, 		cold: 1.0, warm: 0.2, },
+					{ time: start + 30, cold: 1.0, warm: 0.0, },
+
+					{ time: end, 		cold: 1.0, warm: 0.0, },
+					{ time: end + 30, 	cold: 0.0, warm: 0.0, },
+					{ time: 1440, 		cold: 0.0, warm: 0.0, },
+				];
+
+				this.eBean.style.backgroundImage = makeConicGradient(this.gradient);
+			},
+		};
+
+		[lamp.eStartTime, _, lamp.eEndTime] = lamp.eTime.children;
+
+		lamp.eTime.addEventListener("change", (e) => {
+			lamp.update();
+		});
+
+		lamp.update();
+
+		lamp.eUpdate.addEventListener("click", async (e) => {
+			const resp = await postGradient(serializeGradient(lamp.gradient));
+			alert(resp.ok ? "Updated!" : `Error ${resp.status}: ${resp.statusText}`);
+		});
+	</script>
+</body>
+</html>
